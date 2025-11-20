@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, jsonify
-from app import supabase   
+from database import supabase
 
 admin_bp = Blueprint("admin", __name__, template_folder="templates")
 

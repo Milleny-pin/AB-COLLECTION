@@ -1,5 +1,8 @@
 from flask import Flask, render_template
+from database import supabase 
 from admin import admin_bp  
+from public import public_bp
+
 
 app = Flask(__name__, template_folder="templates")
 
