@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABCOLLECTION</title>
+</head>
+<body>
+     <header>
+    <div class="anuncios">
+        <div class="div_anuncio">
+            <h1>ANUNCIOANUNCIOANUNCIO</h1>
+        </div>
+    </div>
+    
+
+    <div class="buscas">
+        <div class="buscas1">
+            <img src="">
+            <form action="/buscar" method="GET">
+                <input type="search" name="busca" placeholder="DIGITE O NOME DO PRODUTO">
+                <button type="submit">BUSCAR</button>
+            </form>
+       </div>
+       
+        <nav class="menu-principal">
+            <a href="#novidades" class="novidades">NOVIDADES</a>
+            <a href="#novidades" class="novidades">NOVIDADES</a>
+            <a href="#novidades" class="novidades">NOVIDADES</a>
+            <a href="#novidades" class="novidades">NOVIDADES</a>
+        
+        </nav>
+       
+    </div>
+</header>
+
+<div class="produto_comprar">
+        <h1>{{products.name}}</h1>
+        <p>{{products.price}}</p>
+
+        <div class="tamanhos">
+            <input type="radio" id="tamanho_p" name="tamanho" value="p" class="radio-button-input" required>
+            <label for="tamanho_p" class="radio-button-label">P</label>
+
+            <input type="radio" id="tamanho_m" name="tamanho" value="m" class="radio-button-input" required>
+            <label for="tamanho_m" class="radio-button-label">M</label>
+
+            <input type="radio" id="tamanho_g" name="tamanho" value="g" class="radio-button-input" required>
+            <label for="tamanho_g" class="radio-button-label">G</label>
+
+            <input type="radio" id="tamanho_gg" name="tamanho" value="gg" class="radio-button-input" required>
+            <label for="tamanho_g" class="radio-button-label">GG</label>
+        </div>
+
+        <div>
+                    <label for="estoque" class="block text-sm font-medium text-gray-700 mb-2">Estoque desta Variante</label>
+                    <div class="quantity-control">
+                        <!-- Botão de Decremento -->
+                        <button type="button" class="quantity-btn rounded-l-lg border-r border-gray-300" onclick="updateQuantity('estoque', -1)">
+                            -
+                        </button>
+                        <!-- Campo de Input (o nome "estoque" deve corresponder ao backend) -->
+                        <input type="number" id="estoque" name="estoque" value="1" min="1" required 
+                               class="quantity-input text-gray-900 focus:outline-none">
+                        <!-- Botão de Incremento -->
+                        <button type="button" class="quantity-btn rounded-r-lg border-l border-gray-300" onclick="updateQuantity('estoque', 1)">
+                            +
+                        </button>
+                    </div>
+                </div>
+       
+    <img id="principal" src="{{products.image_url[0]}}">
+    <div class="galeria" >
+        {% for img in products.image_url %}
+        <img src="{{img}}" class="thumb">
+        {%endfor%}
+
+    </div>
+</div>
+    
+</body>
+</html>
