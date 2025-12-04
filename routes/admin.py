@@ -44,7 +44,10 @@ def admin_cadastrar_produto():
 
         supabase.table("products").insert(product_data).execute()
 
-        return render_template("admin.html", mensagem="Produto cadastrado com sucesso!")
-
+        return jsonify({
+            "mensagem": "Produto cadastrado com sucesso!",
+            "produto": product_data
+        }), 201
+    
     except Exception as e:
         return jsonify({"erro": f"Erro ao inserir: {e}"}), 500

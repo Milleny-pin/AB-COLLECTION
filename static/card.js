@@ -3,10 +3,10 @@
 // =========================
 async function carregarProdutos() {
     try {
-        const resposta = await fetch("http://localhost:5000/produtos"); // sua rota GET
+        const resposta = await fetch("http://localhost:5000/produtos");
         const produtos = await resposta.json();
 
-        produtos.forEach(produto => criarCard(produto)); // ← cria o HTML automático
+        produtos.forEach(produto => criarCard(produto));
     } catch (e) {
         console.error("Erro ao carregar produtos", e);
     }
@@ -24,7 +24,7 @@ function criarCard(dados) {
     card.className = "card";
 
     const img = document.createElement("img");
-    img.src = dados.image_url; // ← pega do banco
+    img.src = dados.image_url;
     img.alt = dados.name;
 
     const h2 = document.createElement("h2");
@@ -37,15 +37,20 @@ function criarCard(dados) {
     btn.textContent = "⭐";
     btn.className = "favoritar-btn";
 
+    const botao = document.createElement("button");
+    botao.textContent = "COMPRAR";
+    botao.className = "comprar"
+
     // Evento do botão
-    btn.onclick = () => favoritar(dados.id, 1); // << produto_id , user_id fixo de exemplo
+    btn.onclick = () => favoritar(dados.id, 1);
 
 
-    // Montagem (equivalente ao appendChild)
+    // Montagem 
     card.appendChild(img);
     card.appendChild(h2);
     card.appendChild(h3);
     card.appendChild(btn);
+    card.appendChild(botao);
 
     container.appendChild(card);
 }
