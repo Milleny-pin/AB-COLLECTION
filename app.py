@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 from database import supabase 
-from admin import admin_bp  
-from public import public_bp
-
+from routes.admin import admin_bp
+from routes.public import usuario_bp 
+from routes.favoritar import favoritar_bp 
 
 app = Flask(__name__, template_folder="templates")
 

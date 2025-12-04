@@ -1,6 +1,15 @@
 from flask import Blueprint, render_template, request, jsonify,  redirect, url_for, session
+from flask import Flask
+from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager 
+import os
+from datetime import timedelta
 from database import supabase
 
+db = SQLAlchemy()
+login_manager = LoginManager()
+login_manager.login_view = 'usuario.login_cliente'
 usuario_bp = Blueprint("usuario", __name__, template_folder="templates")
 
 # ------------------ ROTA INICIAL ------------------

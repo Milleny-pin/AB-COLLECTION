@@ -1,0 +1,73 @@
+body{
+   background-color: #e3e3e3; 
+    display: flex;
+    justify-content: center;
+    min-height: 100vh; 
+    align-items: flex-start;
+
+}
+
+.login_cliente-card {
+           
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 380px; 
+            width: 90%;
+            
+           
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        /* ---------------------------------------------------------------------- */
+        /* Estilo do Formulário */
+        /* ---------------------------------------------------------------------- */
+        .login_cliente-form {
+            width: 100%; 
+            display: flex;
+            flex-direction: column;
+            gap: 15px; 
+            margin-top: 20px;
+        }
+
+    
+        .login_cliente-form input[type="email"],
+        .login_cliente-form input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            box-sizing: border-box; 
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .login_cliente-form input:focus {
+            border-color: #411210; 
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+
+    
+        #register-button {
+            background-color: #671818; 
+            color: white;
+            padding: 12px 0;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.1s;
+        
+            width: 100%; 
+        }
+
+        #register-button:hover {
+            background-color:  #220707;
+            transform: translateY(-1px);
+        }

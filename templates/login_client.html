@@ -3,21 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABCCOLLECT</title>
+    <link rel="stylesheet" href="/static/login_usuario.css">
+
+    <title>ABCOLLECT</title>
 </head>
 <body>
          <!-- Formulário de cadastro de usuários -->
+        <div class="login_cliente-card">
 
-    <form method="POST" action="{{ url_for('usuario.login_cliente') }}">
-        <label for="email">E-mail: </label>
-        <input type="email" id="email" name="email" required><br><br>
+            <h1 class="text-2xl font-bold text-gray-800 mb-2">AB Collection</h1>
+            <h2 class="text-xl font-semibold text-gray-600 mb-6">Login to Your Account</h2>
 
-        <label for="password">Senha: </label>
-        <input type="password" id="password" name="password" required><br><br>
+            <form method="POST" action="{{ url_for('usuario.login_cliente') }}" class="login_cliente-form">
+            
+            <!-- Campo de EMAIL -->
+            <input type="email" id="email" name="email" placeholder="Email" required>
 
-        <button type="submit" id="register-button">Cadastrar</button>
-    </form>
+            <!-- Campo de Senha -->
+            <input type="password" id="password" name="password" placeholder="Password" required>
 
+            <!-- Botão de Ação -->
+            <button type="submit" id="register-button">LOGIN</button>
+            <div class="caixinha">
+                <input type="checkbox" id="remember-me" name="remember-me" class="rounded text-indigo-600 focus:ring-indigo-500 mr-2">
+                <label for="remember_me" class="text-sm text-gray-600 select-none">Lembrar Senha?</label>
+            </div>
+            
+        </form>
+        
+       
+
+        </div>
     </div>
    
 
