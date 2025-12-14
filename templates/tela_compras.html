@@ -3,89 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ABCOLLECTION</title>
+    <title>Detalhe do Produto - ABCOLLECTION</title>
+    <style>
+     
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none; /* Inicia escondido */
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+        }
+        .modal.open {
+            display: flex; 
+        }
+        .modal-content {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
-<body>
-     <header>
-    <div class="anuncios">
-        <div class="div_anuncio">
-            <h1>ANUNCIOANUNCIOANUNCIO</h1>
-        </div>
-    </div>
-    
+<body class="">
 
-    <div class="buscas">
-        <div class="buscas1">
-            <img src="">
-            <form action="/buscar" method="GET">
-                <input type="search" name="busca" placeholder="DIGITE O NOME DO PRODUTO">
-                <button type="submit">BUSCAR</button>
-            </form>
-       </div>
-       
-        <nav class="menu-principal">
-            <a href="#novidades" class="novidades">NOVIDADES</a>
-            <a href="#novidades" class="novidades">NOVIDADES</a>
-            <a href="#novidades" class="novidades">NOVIDADES</a>
-            <a href="#novidades" class="novidades">NOVIDADES</a>
+    <!-- Header (Classes Tailwind mantidas, mas sem o framework carregado) -->
+    <header class="bg-white shadow-md">
+        <div class="anuncios bg-indigo-600 text-white text-center py-2">
+            <h1 class="text-sm md:text-base font-medium">ANUNCIOANUNCIOANUNCIO</h1>
+        </div>
         
-        </nav>
-       
-    </div>
-</header>
+        <div class="buscas max-w-7xl mx-auto px-4 py-4 md:flex justify-between items-center">
+            <div class="buscas1 flex items-center space-x-4 mb-4 md:mb-0">
+                <!-- Logotipo Placeholder -->
+                <img src="https://placehold.co/50x50/333333/ffffff?text=LOGO" alt="Logo" class="h-10 w-10 rounded-full">
+                <!-- Formulário de Busca -->
+                <form action="/buscar" method="GET" class="flex border border-gray-300 rounded-lg overflow-hidden flex-grow max-w-md">
+                    <input type="search" name="busca" placeholder="DIGITE O NOME DO PRODUTO" 
+                           class="px-4 py-2 w-full focus:outline-none text-gray-700">
+                    <button type="submit" class="bg-indigo-500 text-white px-4 py-2 hover:bg-indigo-600 transition duration-150">
+                        BUSCAR
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Menu Principal -->
+            <nav class="menu-principal flex space-x-4 overflow-x-auto whitespace-nowrap py-2">
+                <a href="#novidades" class="text-gray-700 font-semibold hover:text-indigo-600 transition duration-150">NOVIDADES</a>
+                <a href="#masculino" class="text-gray-700 font-semibold hover:text-indigo-600 transition duration-150">MASCULINO</a>
+                <a href="#feminino" class="text-gray-700 font-semibold hover:text-indigo-600 transition duration-150">FEMININO</a>
+                <a href="#promocao" class="text-gray-700 font-semibold hover:text-indigo-600 transition duration-150">PROMOÇÃO</a>
+            </nav>
+        </div>
+    </header>
 
-<div class="produto_comprar">
-        <h1>{{products.name}}</h1>
-        <p>{{products.price}}</p>
-
-        <div class="tamanhos">
-            <input type="radio" id="tamanho_p" name="tamanho" value="p" class="radio-button-input" required>
-            <label for="tamanho_p" class="radio-button-label">P</label>
-
-            <input type="radio" id="tamanho_m" name="tamanho" value="m" class="radio-button-input" required>
-            <label for="tamanho_m" class="radio-button-label">M</label>
-
-            <input type="radio" id="tamanho_g" name="tamanho" value="g" class="radio-button-input" required>
-            <label for="tamanho_g" class="radio-button-label">G</label>
-
-            <input type="radio" id="tamanho_gg" name="tamanho" value="gg" class="radio-button-input" required>
-            <label for="tamanho_g" class="radio-button-label">GG</label>
+    <!-- Conteúdo Principal - Detalhe do Produto -->
+    <main class="max-w-7xl mx-auto p-4 md:p-8 grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white shadow-lg rounded-lg mt-8">
+        
+        <!-- Coluna de Imagens e Galeria -->
+        <div class="image-column">
+            <!-- Imagem Principal Mock -->
+            <img id="principal" src="https://placehold.co/600x800/8b5cf6/ffffff?text=Produto+Principal" 
+                 alt="Produto Principal" class="w-full h-auto object-cover rounded-xl shadow-md mb-4">
+            
+            <!-- Galeria de Thumbnails Mock -->
+            <div class="galeria flex space-x-3 overflow-x-auto pb-2">
+                <img src="https://placehold.co/100x133/8b5cf6/ffffff?text=Thumb+1" class="thumb w-20 h-auto object-cover rounded-lg cursor-pointer hover:opacity-75 transition" onclick="setMainImage(this.src)">
+                <img src="https://placehold.co/100x133/a78bfa/ffffff?text=Thumb+2" class="thumb w-20 h-auto object-cover rounded-lg cursor-pointer hover:opacity-75 transition" onclick="setMainImage(this.src)">
+                <img src="https://placehold.co/100x133/c4b5fd/ffffff?text=Thumb+3" class="thumb w-20 h-auto object-cover rounded-lg cursor-pointer hover:opacity-75 transition" onclick="setMainImage(this.src)">
+            </div>
         </div>
 
-        <div>
-                    <label for="estoque" class="block text-sm font-medium text-gray-700 mb-2">Estoque desta Variante</label>
-                    <div class="quantity-control">
-                        <!-- Botão de Decremento -->
-                        <button type="button" class="quantity-btn rounded-l-lg border-r border-gray-300" onclick="updateQuantity('estoque', -1)">
-                            -
-                        </button>
-                        <!-- Campo de Input (o nome "estoque" deve corresponder ao backend) -->
-                        <input type="number" id="estoque" name="estoque" value="1" min="1" required 
-                               class="quantity-input text-gray-900 focus:outline-none">
-                        <!-- Botão de Incremento -->
-                        <button type="button" class="quantity-btn rounded-r-lg border-l border-gray-300" onclick="updateQuantity('estoque', 1)">
-                            +
-                        </button>
+        <!-- Coluna de Informações e Compra -->
+        <div class="produto_comprar space-y-6">
+            <h1 class="text-4xl font-bold text-gray-900">Camiseta Confort Fit (Mock Name)</h1>
+            <p class="text-3xl font-extrabold text-red-600">R$ 129,90</p>
+
+            <!-- Seleção de Tamanhos -->
+            <div class="tamanhos flex space-x-3 items-center">
+                <span class="text-lg font-semibold text-gray-700">Tamanho:</span>
+              
+                <input type="radio" id="tamanho_p" name="tamanho" value="p" class="radio-button-input" required checked>
+                <label for="tamanho_p" class="radio-button-label">P</label>
+
+                <input type="radio" id="tamanho_m" name="tamanho" value="m" class="radio-button-input" required>
+                <label for="tamanho_m" class="radio-button-label">M</label>
+
+                <input type="radio" id="tamanho_g" name="tamanho" value="g" class="radio-button-input" required>
+                <label for="tamanho_g" class="radio-button-label">G</label>
+
+                <input type="radio" id="tamanho_gg" name="tamanho" value="gg" class="radio-button-input" required>
+                <label for="tamanho_gg" class="radio-button-label">GG</label>
+            </div>
+
+            <!-- Controle de Quantidade -->
+            <div>
+                <label for="quantidade" class="block text-sm font-medium text-gray-700 mb-2">Quantidade (Estoque Disponível: 10)</label>
+               
+                <div class="quantity-control">
+                    <button type="button" class="quantity-btn rounded-l-lg border-r border-gray-300" onclick="updateQuantity('quantidade', -1)">
+                        -
+                    </button>
+                    <input type="number" id="quantidade" name="quantidade" value="1" min="1" max="10" required 
+                           class="quantity-input text-gray-900 focus:outline-none">
+                    <button type="button" class="quantity-btn rounded-r-lg border-l border-gray-300" onclick="updateQuantity('quantidade', 1)">
+                        +
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Botão que Abre o Modal -->
+            <button onclick="openModal()" class="w-full py-4 text-xl font-bold bg-green-500 text-white rounded-xl shadow-lg hover:bg-green-600 transition duration-200 uppercase tracking-widest">
+                Comprar Agora
+            </button>
+            
+            <!-- Descrição -->
+            <div class="mt-8 pt-4 border-t border-gray-200">
+                <h2 class="text-2xl font-bold text-gray-900 mb-3">Descrição</h2>
+                <p class="text-gray-600 leading-relaxed">
+                    Esta é uma peça essencial para o seu guarda-roupa. Feita com 100% algodão premium, garante conforto e durabilidade. 
+                    Perfeita para qualquer ocasião, do casual ao mais arrumado. Disponível em várias cores e tamanhos.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Outros Produtos (Placeholder) -->
+    <div class="max-w-7xl mx-auto p-4 md:p-8 mt-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b-2 border-indigo-500 pb-2">VOCÊ PODE GOSTAR TAMBÉM</h2>
+        <!-- Aqui entraria a grade de sugestões, similar ao arquivo anterior -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <!-- Mock Cards -->
+            <div class="bg-white rounded-lg shadow-md p-4 text-center">
+                <img src="https://placehold.co/200x266/f97316/ffffff?text=Sugestão" class="w-full rounded-lg mb-2">
+                <p class="font-semibold text-gray-800">Item Relacionado 1</p>
+                <p class="text-lg text-red-500">R$ 50,00</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-4 text-center">
+                <img src="https://placehold.co/200x266/f97316/ffffff?text=Sugestão" class="w-full rounded-lg mb-2">
+                <p class="font-semibold text-gray-800">Item Relacionado 2</p>
+                <p class="text-lg text-red-500">R$ 80,00</p>
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- Modal de Pagamento (Pop-up) -->
+    <div id="payment-modal" class="modal" onclick="closeModalOutside(event)">
+        <div class="modal-content w-full max-w-lg p-6 relative transform transition-all duration-300 scale-95">
+            
+            <!-- Título e Botão de Fechar -->
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+                <h2 class="text-2xl font-bold text-gray-900 uppercase tracking-wide">FINALIZAR COMPRA</h2>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 transition duration-150">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <!-- Resumo do Pedido -->
+            <div class="flex justify-between items-center text-lg font-semibold mb-6 p-3 bg-gray-50 rounded-lg">
+                <span>SEU PEDIDO (1 item)</span>
+                <span id="modal-total" class="text-red-600">TOTAL: R$ 129,90</span>
+            </div>
+
+            <!-- Opções de Pagamento -->
+            <div class="space-y-5">
+                <h3 class="text-xl font-bold text-gray-800 mb-4">OPÇÕES DE PAGAMENTO</h3>
+                
+                <!-- Opção 1: Cartão / Stripe -->
+                <div class="flex flex-col p-4 border border-indigo-200 rounded-lg bg-indigo-50 shadow-sm">
+                    <label class="flex items-center space-x-3 cursor-pointer mb-2">
+                        <input type="radio" name="payment_option" value="stripe" checked class="text-indigo-600 focus:ring-indigo-500 h-5 w-5">
+                        <span class="text-gray-800 font-medium">Cartão de Crédito (Stripe)</span>
+                    </label>
+                    <div class="flex space-x-2 ml-8">
+                        <img src="https://placehold.co/40x25/ffffff/333333?text=Visa" alt="Visa" class="h-6">
+                        <img src="https://placehold.co/40x25/ffffff/333333?text=Master" alt="Mastercard" class="h-6">
+                        <img src="https://placehold.co/40x25/ffffff/333333?text=Elo" alt="Elo" class="h-6">
                     </div>
                 </div>
 
-                <h1>Descrição</h1>
+                <!-- Opção 2: Pix / Mercado Pago -->
+                <div class="flex flex-col p-4 border border-blue-200 rounded-lg bg-blue-50 shadow-sm">
+                    <label class="flex items-center space-x-3 cursor-pointer mb-2">
+                        <input type="radio" name="payment_option" value="mercadopago" class="text-blue-600 focus:ring-blue-500 h-5 w-5">
+                        <span class="text-gray-800 font-medium">Pix, Boleto e Cartão (Mercado Pago)</span>
+                    </label>
+                    <div class="flex space-x-2 ml-8">
+                        <img src="https://placehold.co/40x25/ffffff/333333?text=Pix" alt="Pix" class="h-6">
+                        <img src="https://placehold.co/40x25/ffffff/333333?text=Boleto" alt="Boleto" class="h-6">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Checkbox de Termos e Condições -->
+            <div class="flex items-center mt-6">
+                <input id="save-card" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                <label for="save-card" class="ml-2 block text-sm text-gray-900">
+                    Eu li e concordo com os Termos e Condições.
+                </label>
+            </div>
 
-                <p>{{products.description}}</p>
-       
-    <img id="principal" src="{{products.image_url[0]}}">
-    <div class="galeria" >
-        {% for img in products.image_url %}
-        <img src="{{img}}" class="thumb">
-        {%endfor%}
 
+            <!-- Botão Final (Dispara a função de pagamento) -->
+            <button onclick="handlePaymentSubmit()" 
+                    class="w-full py-3 mt-6 text-xl font-bold bg-pink-700 text-white rounded-xl shadow-lg hover:bg-pink-800 transition duration-200 uppercase">
+                IR PARA O PAGAMENTO
+            </button>
+            
+            <button onclick="closeModal()" class="w-full text-sm mt-3 text-gray-500 hover:text-gray-700 transition">
+                Cancelar e Voltar
+            </button>
+
+        </div>
     </div>
-</div>
 
-<div class="outros produtos">
-    <h2>VOCÊ PODE GOSTAR TAMBÉM</h2>
-</div>
 
-    
+    <script>
+        // Simulação de funções do backend / vitrine
+        const MOCK_PRODUCT_ID = 'p1';
+
+        // Função para trocar a imagem principal
+        function setMainImage(src) {
+            document.getElementById('principal').src = src;
+        }
+
+      
+        function updateQuantity(inputId, delta) {
+            const input = document.getElementById(inputId);
+            let currentValue = parseInt(input.value) || 1;
+            const max = parseInt(input.max) || 999;
+            const min = parseInt(input.min) || 1;
+
+            let newValue = currentValue + delta;
+
+            if (newValue > max) {
+                newValue = max;
+            } else if (newValue < min) {
+                newValue = min;
+            }
+
+            input.value = newValue;
+        }
+
+        // --- LÓGICA DO MODAL ---
+        const paymentModal = document.getElementById('payment-modal');
+
+        function openModal() {
+            // Verifica se um tamanho foi selecionado
+            const selectedSize = document.querySelector('input[name="tamanho"]:checked');
+            if (!selectedSize) {
+            
+                console.error('Por favor, selecione um tamanho antes de continuar.'); 
+                return;
+            }
+
+            // Exibe o modal
+            paymentModal.classList.add('open');
+        }
+
+        function closeModal() {
+            paymentModal.classList.remove('open');
+        }
+        
+        // Fecha o modal se clicar fora do conteúdo
+        function closeModalOutside(event) {
+            if (event.target === paymentModal) {
+                closeModal();
+            }
+        }
+
+        // Função principal chamada ao clicar no botão final do modal
+        function handlePaymentSubmit() {
+            closeModal(); // Fecha o modal
+            
+            const selectedOption = document.querySelector('input[name="payment_option"]:checked').value;
+            const quantity = document.getElementById('quantidade').value;
+            const size = document.querySelector('input[name="tamanho"]:checked').value;
+            
+            console.log(`Finalizando compra... Produto ID: ${MOCK_PRODUCT_ID}, Tamanho: ${size}, Qtd: ${quantity}`);
+
+            // 1. Se Stripe for selecionado:
+            if (selectedOption === 'stripe') {
+                console.log('Redirecionando para o Stripe Checkout...');
+                // chamar a função do backend: comprarProdutoStripe(MOCK_PRODUCT_ID, size, quantity);
+            
+            // 2. Se Mercado Pago for selecionado:
+            } else if (selectedOption === 'mercadopago') {
+                console.log('Redirecionando para o Mercado Pago...');
+                // chamar a função do backend: comprarProdutoMercadoPago(MOCK_PRODUCT_ID, size, quantity);
+            }
+        }
+    </script>
 </body>
 </html>
