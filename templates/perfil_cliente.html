@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+</head>
+<body>
+
+    <div id="profile-card">
+        <h1>Editar Perfil</h1>
+
+        <div class="profile-avatar-section">
+            <!-- Imagem de Preview -->
+            <img id="avatar-preview" 
+                 src="https://placehold.co/128x128/D1D5DB/4B5563?text=Avatar" 
+                 alt="Foto de Perfil"
+                 onerror="this.onerror=null; this.src='https://placehold.co/128x128/D1D5DB/4B5563?text=Avatar';"
+            >
+            <!-- Input para Arquivo -->
+            <label for="avatar-input">
+                <input type="file" id="avatar-input" name="avatar_file" accept="image/*">
+                Mudar Foto
+            </label>
+            <p id="upload-status"></p>
+        </div>
+
+        <div id="loading">Carregando dados...</div>
+
+        <form id="profile-form">
+            <div>
+                <label for="full_name">Nome Completo</label>
+                <input type="text" id="full_name" name="full_name">
+            </div>
+            <div>
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" disabled>
+            </div>
+            
+            <h2>Contatos</h2>
+            <div id="telefones-container">
+                <!-- Exemplo de Campo de Telefone Estático -->
+                <div class="telefone-field">
+                    <input type="text" placeholder="Número de telefone">
+                    <button type="button">Remover</button>
+                </div>
+            </div>
+            <button type="button">Adicionar Telefone</button>
+
+            <button type="submit" id="save-button">
+                Salvar Alterações
+            </button>
+        </form>
+    </div>
+</body>
+</html>
